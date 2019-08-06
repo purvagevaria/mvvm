@@ -20,3 +20,6 @@ build
 
 
 <uses-permission android:name="android.permission.INTERNET"/>
+
+
+DTO genrator

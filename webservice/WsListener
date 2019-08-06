@@ -1,0 +1,8 @@
+package com.notimp.webservice.interfaces
+
+
+interface WsListener {
+    fun onResponseSuccess(baseResponse: Any)
+
+    fun notifyResponseFailed(message: String?, request: Any?)
+}

@@ -1,0 +1,35 @@
+package com.pg.mvvmexample.adapter
+
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.pg.mvvmexample.R
+import com.pg.mvvmexample.model.UserBean
+import kotlinx.android.synthetic.main.single_item.view.*
+
+class UserListAdapter(alScanDevices: ArrayList<UserBean>) :
+        RecyclerView.Adapter<UserListAdapter.MyViewHolder>() {
+
+    private val TAG: String = "UserListAdapter"
+    private var alScanDevices = ArrayList<UserBean>()
+
+    init {
+        this.alScanDevices = alScanDevices
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.single_item, parent, false)
+        return MyViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.tvEmail.text = alScanDevices.get(position).title
+    }
+
+    override fun getItemCount(): Int = alScanDevices.size
+
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var tvEmail = view.tvEmail!!
+    }
+}

@@ -1,0 +1,41 @@
+import com.notimp.webservice.interfaces.WsListener
+import com.pg.mvvmexample.model.UserBean
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
+object AppWs {
+    private val TAG = AppWs::class.java.name
+
+
+    //LOGIN------------------------------------------------------------
+    fun login(request: Int, listener: WsListener?) {
+        val call = RestClient.get()!!.login(request)
+        try {
+            call.enqueue(object : Callback<UserBean> {
+                override fun onResponse(call: Call<UserBean>, response: Response<UserBean>) {
+                    val baseResponse = response.body()
+                    if (baseResponse != null && response.isSuccessful) {
+                        listener?.onResponseSuccess(baseResponse)
+                    } else {
+                        if (listener != null) {
+                            val errorBody = response.errorBody()
+                            if (errorBody != null) {
+
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<UserBean>, t: Throwable) {
+
+                }
+            })
+        } catch (e: Exception) {
+
+        }
+    }
+
+
+}
+

@@ -23,3 +23,6 @@ build
 
 
 DTO genrator
+
+
+https://github.com/anitaa1990/Android-Cheat-sheet
